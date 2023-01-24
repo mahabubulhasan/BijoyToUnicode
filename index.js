@@ -1,4 +1,4 @@
-const { Pool, Client } = require('pg')
+const { Pool } = require('pg')
 const fs = require('fs/promises');
 const {ConvertToUnicode, IsAscii} = require('./bijoy2uni')
 require('dotenv').config();
@@ -17,7 +17,7 @@ function fetchAllDistinct(table, column){
 	return client.query(sql)
 }
 
-function saveRow(table, column, ascii, unicode){
+function queryString(table, column, ascii, unicode){
 	return `UPDATE ${table} SET ${column}='${unicode}' WHERE ${column}='${ascii}';\n`
 }
 
@@ -29,7 +29,7 @@ async function generateSql(table, column){
 			return
 		}
 
-		sql += saveRow(table, column, r[column], ConvertToUnicode('bijoy', r[column].trim()))				
+		sql += queryString(table, column, r[column], ConvertToUnicode('bijoy', r[column].trim()))				
 	})
 	
 	console.log(sql)
