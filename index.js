@@ -13,7 +13,7 @@ const client = new Pool({
 });
 
 function fetchAllDistinct(table, column){
-	const sql = `SELECT DISTINCT ${column} FROM ${table} WHERE address IS NOT NULL`
+	const sql = `SELECT DISTINCT ${column} FROM ${table} WHERE ${column} IS NOT NULL`
 	return client.query(sql)
 }
 
@@ -21,7 +21,7 @@ function saveRow(table, column, ascii, unicode){
 	return `UPDATE ${table} SET ${column}='${unicode}' WHERE ${column}='${ascii}';\n`
 }
 
-async function replaceInDb(table, column){
+async function generateSql(table, column){
 	const res = await fetchAllDistinct(table, column)
 	let sql  = '';
 	res.rows.forEach(r => {
@@ -47,6 +47,8 @@ async function run(callback){
 
 
 run(async ()=>{
-	// add your code below here 
-	await replaceInDb('raw_data.astructure', 'address')	
+	//////////////////////////////
+	// add your code below here //
+	//////////////////////////////
+	await generateSql('raw_data.astructure', 'address')	
 })
