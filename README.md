@@ -10,7 +10,7 @@ In `index.js` find the following code
 ```javascript
 run(async ()=>{
 	await replaceInDb('table_name_A', 'column_name_1_containing_bijoy_ascii_text')
-  await replaceInDb('table_name_B', 'column_name_2_containing_bijoy_ascii_text')
+  	await replaceInDb('table_name_B', 'column_name_2_containing_bijoy_ascii_text')
 	await replaceInDb('table_name_C', 'column_name_2_containing_bijoy_ascii_text')	
 })
 ```
