@@ -1,5 +1,5 @@
 # BijoyToUnicode
-Mass converter bijoy to unicode text
+Mass convert bijoy ascii text to unicode bangla text
 
 ### Database Config
 Rename the `example.env` to `.env` and update the configurations there.
