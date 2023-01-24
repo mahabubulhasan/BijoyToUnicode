@@ -38,7 +38,6 @@ async function replaceInDb(table, column){
 
 async function run(callback){
 	try{
-		// await client.connect()
 		await callback()	
 		await client.end()		
 	}catch(err){
@@ -46,7 +45,8 @@ async function run(callback){
 	}
 }
 
+
 run(async ()=>{
-	
+	// add your code below here 
 	await replaceInDb('raw_data.astructure', 'address')	
 })
